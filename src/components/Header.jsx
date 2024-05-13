@@ -10,20 +10,20 @@ const navLinks = [
 function Header() {
   return (
     <div className="Header">
-      <header class="bg-green border-b border-gray-700">
-        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <nav class="flex items-center justify-between h-16 lg:h-20">
-            <div class="flex-shrink-0 text-white">
-              <NavLink to="/" className="border p-2 rounded">
+      <header className="bg-green border-b border-gray-700">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <nav className="flex items-center justify-between h-16 lg:h-20">
+            <div className="flex-shrink-0 text-white">
+              <NavLink to="/" className="p-2 rounded font-semibold text-base">
                 Home
               </NavLink>
             </div>
             <button
               type="button"
-              class="inline-flex p-2 text-white transition-all duration-200 rounded-md md:hidden focus:bg-gray-800 hover:bg-gray-800"
+              className="inline-flex p-2 text-white transition-all duration-200 rounded-md md:hidden focus:bg-gray-800 hover:bg-gray-800"
             >
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -37,11 +37,11 @@ function Header() {
                 />
               </svg>
             </button>
-            <div class="hidden md:flex md:items-center md:space-x-10 text-white">
+            <div className="hidden md:flex md:items-center md:space-x-10 text-white">
               {navLinks.map((link, index) => (
                 <NavLink
                   to={link.to}
-                  class="text-sm font-medium text-white transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70"
+                  className="text-sm font-medium text-white transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
                 >
                   {link.text}
                 </NavLink>

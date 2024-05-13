@@ -2,10 +2,16 @@ import "./App.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Hotel from "./components/Hotel";
+
 import Home from "./components/Home";
-import Flights from "./components/Flights";
+
+import FlightList from "./components/Flight/FlightList";
+import FlightDetails from "./components/Flight/FlightDetails";
+
 import Activities from "./components/Activities";
+
+import Hotel from "./components/Hotel";
+
 import Login from "./components/Login";
 
 
@@ -20,7 +26,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/hotels" element={<Hotel />} />
           <Route path="/activities" element={<Activities />} />
-          <Route path="/flights" element={<Flights />} />
+          <Route path="/flights" element={<FlightList />} />
+          <Route path="/flight/:id" element={<FlightDetails />} />
+          {/* <Route path="/activity/:id" component={<FlightDetails />} />
+          <Route path="/hotel/:id" component={<FlightDetails />} /> */}
           <Route path="/login" element={<Login />} />
         </Routes>
       </main>

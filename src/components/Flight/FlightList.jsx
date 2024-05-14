@@ -14,7 +14,7 @@ function FlightList() {
     fetchFlights();
   }, []);
   return (
-    <div className="Flights">
+    <div>
       <h1 className="text-center text-3xl mb-12 font-bold">
         ✈️ - Flight List - ✈️
       </h1>

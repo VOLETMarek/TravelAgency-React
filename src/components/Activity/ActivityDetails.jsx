@@ -1,43 +1,30 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const FlightDetails = () => {
+const ActivityDetails = () => {
   let location = useLocation();
   const { state } = location;
   return (
     <div>
       <h1 className="text-center text-3xl mb-12 font-bold">
-        ✈️ - Flight Details - ✈️
+        ✈️ - Activity Details - ✈️
       </h1>
       <section class="bg-white dark:bg-gray-900">
         <div class="flex flex-col justify-center items-center p-8">
           <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
-            {state.flight.airline}
+            {state.activity.name}
           </h1>
 
           <div class="mt-8 lg:-mx-6 lg:items-center">
             <img
               class="object-cover w-full rounded-xl h-72 lg:h-96"
-              src={state.flight.image}
-              alt="flight-pic"
+              src={state.activity.image}
+              alt="activity-pic"
             />
 
             <div class="flex justify-center">
               <div class="flex items-center mt-8">
-                <img
-                  class="object-cover object-center w-10 h-10 rounded-full"
-                  src={state.flight.logo}
-                  alt="flight-logo"
-                />
-
-                <div class="mx-4">
-                  <h1 class="text-sm text-gray-700 dark:text-gray-200">
-                    {state.flight.airline}
-                  </h1>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    {state.flight.flight_number}
-                  </p>
-                </div>
+                <p>{state.activity.description}</p>
               </div>
             </div>
 
@@ -46,22 +33,16 @@ const FlightDetails = () => {
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" class="px-6 py-3">
-                      Departure Airport
+                      Start Date
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Arrival Airport
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Departure Date
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Arrival Date
+                      End Date
                     </th>
                     <th scope="col" class="px-6 py-3">
                       Duration
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Remaining Seats
+                      Location
                     </th>
                     <th scope="col" class="px-6 py-3">
                       Price
@@ -70,10 +51,8 @@ const FlightDetails = () => {
                 </thead>
                 <tbody>
                   <tr class="bg-white dark:bg-gray-800 dark:border-gray-700">
-                    <td class="px-6 py-4">{state.flight.departure_airport}</td>
-                    <td class="px-6 py-4">{state.flight.arrival_airport}</td>
                     <td class="px-6 py-4">
-                      {new Date(state.flight.departure_date).toLocaleString(
+                      {new Date(state.activity.start_date).toLocaleString(
                         "en-US",
                         {
                           year: "numeric",
@@ -86,7 +65,7 @@ const FlightDetails = () => {
                       )}
                     </td>
                     <td class="px-6 py-4">
-                      {new Date(state.flight.arrival_date).toLocaleString(
+                      {new Date(state.activity.end_date).toLocaleString(
                         "en-US",
                         {
                           year: "numeric",
@@ -99,10 +78,10 @@ const FlightDetails = () => {
                       )}
                     </td>
                     <td class="px-6 py-4">
-                      {state.flight.duration.substring(0, 5)} hours
+                      {state.activity.duration.substring(0, 5)} hours
                     </td>
-                    <td class="px-6 py-4">{state.flight.remaining_seats}</td>
-                    <td class="px-6 py-4">{state.flight.price}€</td>
+                    <td class="px-6 py-4">{state.activity.location}</td>
+                    <td class="px-6 py-4">{state.activity.price}€</td>
                   </tr>
                 </tbody>
               </table>
@@ -131,4 +110,4 @@ const FlightDetails = () => {
   );
 };
 
-export default FlightDetails;
+export default ActivityDetails;

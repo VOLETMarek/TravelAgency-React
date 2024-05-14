@@ -14,7 +14,7 @@ import ActivityDetails from "./components/Activity/ActivityDetails";
 import Hotel from "./components/Hotel/HotelList";
 import HotelDetails from "./components/Hotel/HotelDetails";
 
-import Login from "./components/Login";
+import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 
 import { Route, Routes } from "react-router-dom";
@@ -32,7 +32,7 @@ function App() {
           <Route path="/flight/:id" element={<FlightDetails />} />
           <Route path="/activity/:id" element={<ActivityDetails />} />
           <Route path="/hotel/:id" element={<HotelDetails />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </main>

@@ -1,20 +1,31 @@
 import { NavLink, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { removeToken } from "../services/tokenService";
 
 const navLinks = [
-  { to: "/Flights", text: "Flights" },
-  { to: "/Activities", text: "Activities" },
-  { to: "/Hotels", text: "Hotels" },
-  { to: "/Login", text: "Login" },
+  { to: "/flights", text: "Flights" },
+  { to: "/activities", text: "Activities" },
+  { to: "/hotels", text: "Hotels" },
 ];
 
 function Header() {
+  const { isLogged, setIsLogged } = useAuth();
+
+  const handleLogout = () => {
+    setIsLogged(false);
+    removeToken();
+  };
+
   return (
     <div className="Header">
       <header className="bg-green border-b border-gray-700">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <nav className="flex items-center justify-between h-16 lg:h-20">
             <div className="flex-shrink-0">
-              <NavLink to="/" className="p-2 rounded font-semibold text-base">
+              <NavLink
+                to="/"
+                className="text-sm font-medium transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
+              >
                 Home
               </NavLink>
             </div>
@@ -47,6 +58,23 @@ function Header() {
                 </NavLink>
               ))}
             </div>
+            {isLogged ? (
+              // Afficher le bouton "Logout" si l'utilisateur est connecté
+              <button
+                className="text-sm font-medium transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            ) : (
+              // Afficher le lien "Login" si l'utilisateur n'est pas connecté
+              <NavLink
+                to="/signin"
+                className="text-sm font-medium transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
+              >
+                Login
+              </NavLink>
+            )}
           </nav>
         </div>
       </header>

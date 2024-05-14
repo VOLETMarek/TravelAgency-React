@@ -6,3 +6,7 @@ main {
 .flight-card {
   background-color: rgb(227, 226, 226);
 }
+
+.image-container {
+  width: 50%;
+}

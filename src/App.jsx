@@ -11,7 +11,8 @@ import FlightDetails from "./components/Flight/FlightDetails";
 import ActivityList from "./components/Activity/ActivityList";
 import ActivityDetails from "./components/Activity/ActivityDetails";
 
-import Hotel from "./components/Hotel";
+import Hotel from "./components/Hotel/HotelList";
+import HotelDetails from "./components/Hotel/HotelDetails";
 
 import Login from "./components/Login";
 
@@ -29,7 +30,7 @@ function App() {
           <Route path="/flights" element={<FlightList />} />
           <Route path="/flight/:id" element={<FlightDetails />} />
           <Route path="/activity/:id" element={<ActivityDetails />} />
-          {/* <Route path="/hotel/:id" component={<FlightDetails />} /> */}
+          <Route path="/hotel/:id" element={<HotelDetails />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </main>

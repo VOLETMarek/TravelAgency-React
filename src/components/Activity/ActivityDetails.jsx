@@ -6,16 +6,13 @@ const ActivityDetails = () => {
   const { state } = location;
   return (
     <div>
-      <h1 className="text-center text-3xl mb-12 font-bold">
-        ✈️ - Activity Details - ✈️
-      </h1>
       <section class="bg-white dark:bg-gray-900">
         <div class="flex flex-col justify-center items-center p-8">
           <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
             {state.activity.name}
           </h1>
 
-          <div class="mt-8 lg:-mx-6 lg:items-center">
+          <div class="mt-8 lg:-mx-6 lg:items-center image-container">
             <img
               class="object-cover w-full rounded-xl h-72 lg:h-96"
               src={state.activity.image}
@@ -24,7 +21,7 @@ const ActivityDetails = () => {
 
             <div class="flex justify-center">
               <div class="flex items-center mt-8">
-                <p>{state.activity.description}</p>
+                <p className="">{state.activity.description}</p>
               </div>
             </div>
 

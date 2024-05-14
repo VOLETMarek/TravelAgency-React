@@ -15,8 +15,8 @@ function HotelList() {
   }, []);
   return (
     <div>
-      <h1 className="text-center text-3xl mb-12 font-bold">
-      🏠 - Hotel List - 🏠
+      <h1 className="text-center text-3xl py-12 font-bold">
+      🏠 &nbsp;Hotel List &nbsp;🏠
       </h1>
       <div className="flex flex-wrap gap-4 mx-4 justify-center">
         {hotelList.map((hotel, index) => (

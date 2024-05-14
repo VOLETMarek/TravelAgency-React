@@ -15,8 +15,8 @@ function FlightList() {
   }, []);
   return (
     <div>
-      <h1 className="text-center text-3xl mb-12 font-bold">
-        ✈️ - Flight List - ✈️
+      <h1 className="text-center text-3xl py-12 font-bold">
+        ✈️ &nbsp; Flight List &nbsp; ✈️
       </h1>
       <div className="flex flex-wrap gap-4 mx-4 justify-center">
         {flightList.map((flight, index) => (

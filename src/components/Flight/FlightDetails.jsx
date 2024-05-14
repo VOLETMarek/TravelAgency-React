@@ -6,9 +6,9 @@ const FlightDetails = () => {
   const { state } = location;
   return (
     <div>
-      <section class="bg-white dark:bg-gray-900">
+      <section>
         <div class="flex flex-col justify-center items-center p-8">
-          <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
+          <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl">
             {state.flight.airline}
           </h1>
 
@@ -28,7 +28,7 @@ const FlightDetails = () => {
                 />
 
                 <div class="mx-4">
-                  <h1 class="text-sm text-gray-700 dark:text-gray-200">
+                  <h1 class="text-sm">
                     {state.flight.airline}
                   </h1>
                   <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -104,7 +104,7 @@ const FlightDetails = () => {
                 </tbody>
               </table>
             </div>
-            <button class="w-40 h-11 rounded flex border-solid bg-white mx-2 justify-center place-items-center p-2 mx-auto bg-green">
+            <button class="w-40 h-11 rounded flex border-solid mx-2 justify-center place-items-center p-2 mx-auto bg-green">
               <svg
                 class="h-6 w-6 text-green-200"
                 viewBox="0 0 24 24"

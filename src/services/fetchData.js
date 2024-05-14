@@ -6,7 +6,7 @@ export const fetchData = async (endpoint) => {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log("Erreur lors de la récupération des articles :", error);
+    console.log("Erreur lors de la récupération des données :", error);
     return [];
   }
 };

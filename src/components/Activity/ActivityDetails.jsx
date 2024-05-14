@@ -6,9 +6,9 @@ const ActivityDetails = () => {
   const { state } = location;
   return (
     <div>
-      <section class="bg-white dark:bg-gray-900">
+      <section>
         <div class="flex flex-col justify-center items-center p-8">
-          <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
+          <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl">
             {state.activity.name}
           </h1>
 
@@ -83,7 +83,7 @@ const ActivityDetails = () => {
                 </tbody>
               </table>
             </div>
-            <button class="w-40 h-11 rounded flex border-solid bg-white mx-2 justify-center place-items-center p-2 mx-auto bg-green">
+            <button class="w-40 h-11 rounded flex border-solid mx-2 justify-center place-items-center p-2 mx-auto bg-green">
               <svg
                 class="h-6 w-6 text-green-200"
                 viewBox="0 0 24 24"

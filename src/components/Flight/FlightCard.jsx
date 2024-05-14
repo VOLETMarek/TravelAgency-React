@@ -35,7 +35,7 @@ const FlightCard = ({ flight }) => {
           <div className="flex flex-row place-items-center p-2">
             <img
               alt="airway logo"
-              className="w-10 h-10"
+              className="w-10 h-10 rounded-full"
               src={flight.logo}
               style={{
                 opacity: "1",
@@ -84,7 +84,7 @@ const FlightCard = ({ flight }) => {
         <div className="mt-4">
           <div className="flex mx-6 py-4 flex-row flex-wrap items-center justify-between">
             <svg
-              className="w-12 h-10 p-2 mx-2 self-center rounded-full fill-current text-white"
+              className="w-12 h-10 p-2 mx-2 self-center rounded-full fill-current"
               viewBox="0 0 64 64"
               pointer-events="all"
               aria-hidden="true"

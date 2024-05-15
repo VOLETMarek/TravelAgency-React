@@ -17,6 +17,7 @@ function SignIn() {
   const [message, setMessage] = useState("");
 
   const { isLogged, setIsLogged } = useAuth();
+  const { userData, setUserData } = useAuth();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,11 +30,18 @@ function SignIn() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await sign("frontoffice/login", formData);
+    console.log(response);
     if (response.message === "Connexion réussie") {
       // Si l'utilisateur a été crée avec succès, on enregistre le token utilisateur dans la session du navigateur
       saveToken(response.token);
       // Puis on vide et masque le message d'erreur
       setMessage("");
+      // Puis on enregistre les informations utilisateurs dans le contexte (on en aura besoin pour afficher les informations de l'utilisateur, et de gerer l'accès au backoffice via le role)
+      setUserData({
+        ...userData,
+        username: response.username,
+        role: response.role,
+      });
       // Ensuite on vide les informations utilisateurs de l'état de React
       setFormData({
         ...formData,

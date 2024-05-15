@@ -19,6 +19,7 @@ function SignUp() {
   const [message, setMessage] = useState("");
 
   const { isLogged, setIsLogged } = useAuth();
+  const { userData, setUserData } = useAuth();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,6 +37,12 @@ function SignUp() {
       saveToken(response.token);
       // Puis on vide et masque le message d'erreur
       setMessage("");
+      // Puis on enregistre les informations utilisateurs dans le contexte (on en aura besoin pour afficher les informations de l'utilisateur, et de gerer l'accès au backoffice via le role)
+      setUserData({
+        ...userData,
+        username: formData.username,
+        role: "user",
+      });
       // Ensuite on vide les informations utilisateurs de l'état de React
       setFormData({
         ...formData,

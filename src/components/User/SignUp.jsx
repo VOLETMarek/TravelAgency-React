@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import Welcome from "./Message/Welcome";
-import Error from "./Message/Error";
+import Welcome from "../Message/Welcome";
+import Error from "../Message/Error";
 
-import { useAuth } from "../context/AuthContext";
-import { sign } from "../services/authService";
-import { saveToken } from "../services/tokenService";
+import { useAuth } from "../../context/AuthContext";
+import { sign } from "../../services/authService";
+import { saveToken } from "../../services/tokenService";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -68,7 +68,7 @@ function SignUp() {
         <Welcome />
       ) : (
         <section>
-          <div className="flex flex-col items-center justify-center mx-auto py-8">
+          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-[calc(100vh-129px)]">
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">

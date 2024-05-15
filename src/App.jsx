@@ -14,8 +14,10 @@ import ActivityDetails from "./components/Activity/ActivityDetails";
 import Hotel from "./components/Hotel/HotelList";
 import HotelDetails from "./components/Hotel/HotelDetails";
 
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import SignIn from "./components/User/SignIn";
+import SignUp from "./components/User/SignUp";
+import UserInfo from "./components/User/UserInfo";
+import UpdateUser from "./components/User/UpdateUser";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -34,6 +36,8 @@ function App() {
           <Route path="/hotel/:id" element={<HotelDetails />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/user" element={<UserInfo />} />
+          <Route path="/update-user" element={<UpdateUser />} />
         </Routes>
       </main>
       <Footer />

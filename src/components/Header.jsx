@@ -1,6 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { removeToken } from "../services/tokenService";
 
 const navLinks = [
   { to: "/flights", text: "Flights" },
@@ -11,19 +10,6 @@ const navLinks = [
 function Header() {
   const { isLogged, setIsLogged } = useAuth();
   const { userData, setUserData } = useAuth();
-
-  const handleLogout = () => {
-    setIsLogged(false);
-    removeToken();
-    setUserData({
-      ...userData,
-      lastname: "",
-      firstname: "",
-      username: "",
-      email: "",
-      role: "",
-    });
-  };
 
   return (
     <div className="Header">
@@ -69,25 +55,40 @@ function Header() {
                 ))}
               </div>
             </div>
-            <div>
+            {/* Si l'utilisateur est un administrateur, on affiche le lien vers le backoffice  */}
+            <div className="flex items-center justify-center">
               {userData.role === "Admin" && (
                 <Link
                   to="http://localhost:5000/backoffice/"
-                  className="mx-10 text-sm font-medium transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
+                  className="text-sm font-medium transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
                   target="_blank"
                 >
                   Admin
                 </Link>
               )}
-
+              {/* Si l'utilisateur est connecté, on affiche le lien vers la page informations utilisateurs  */}
               {isLogged ? (
-                // Afficher le bouton "Logout" si l'utilisateur est connecté
-                <button
-                  className="text-sm font-medium transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
+                <>
+                  <NavLink
+                    to="/user"
+                    className="ml-10 text-sm font-medium transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70 font-semibold text-base"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                    </svg>
+                  </NavLink>
+                </>
               ) : (
                 // Afficher le lien "Login" si l'utilisateur n'est pas connecté
                 <NavLink

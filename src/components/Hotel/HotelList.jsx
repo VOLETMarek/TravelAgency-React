@@ -18,7 +18,7 @@ function HotelList() {
       <h1 className="text-center text-3xl py-12 font-bold">
       🏠 &nbsp;Hotel List &nbsp;🏠
       </h1>
-      <div className="flex flex-wrap gap-4 mx-4 justify-center">
+      <div className="flex flex-wrap gap-4 mx-4 justify-center mb-8">
         {hotelList.map((hotel, index) => (
           <HotelCard hotel={hotel} />
         ))}

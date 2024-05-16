@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import {useReservation} from "../../context/ReservationContext"
+import Success from "../Message/Success";
 
 
 const FlightDetails = () => {
@@ -110,7 +111,7 @@ const FlightDetails = () => {
                 </tbody>
               </table>
             </div>
-            {isLogged && (
+            {isLogged && !reservationList.flight ? (
               <div class="w-40 h-11 rounded flex border-solid mx-2 justify-center place-items-center p-2 mx-auto bg-green">
                 <svg
                   class="h-6 w-6 text-green-200"
@@ -129,7 +130,7 @@ const FlightDetails = () => {
 
                 <button className="ml-2" onClick={handleAddToCart}>Add to cart</button>
               </div>
-            )}
+            ) : (<Success message="Réservation d'un vol en cours" />)}
           </div>
         </div>
       </section>

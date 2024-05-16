@@ -18,7 +18,7 @@ function ActivityList() {
       <h1 className="text-center text-3xl py-12 font-bold">
       🏄‍♀️ &nbsp; Activity List &nbsp;🏄‍♀️
       </h1>
-      <div className="flex flex-wrap gap-4 mx-4 justify-center">
+      <div className="flex flex-wrap gap-4 mx-4 justify-center mb-8">
         {activityList.map((activity, index) => (
           <ActivityCard activity={activity} />
         ))}

@@ -32,12 +32,19 @@ function Cart() {
       <section className="antialiased md:py-8">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h1 className="text-3xl font-semibold text-gray-900 text-center">
-            🛒 Shopping Cart 🛒
+            🛒&nbsp; Shopping Cart&nbsp; 🛒
           </h1>
+          {/* Si aucune reservation n'est faite, on affiche un message, sinon on affiche les reservations */}
           {!reservationList.flight &&
           !reservationList.hotel &&
           !reservationList.activity ? (
-            <p className="text-center mt-8">No reservation</p>
+            <div className="flex flex-col justify-center items-center">
+              <p className="text-center my-8 text-2xl font-semibold">No reservations</p>
+              <img
+                src="https://images.pexels.com/photos/3360711/pexels-photo-3360711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="no-reservation"
+              />
+            </div>
           ) : (
             <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
               <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">

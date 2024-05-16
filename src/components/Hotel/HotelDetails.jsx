@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useReservation } from "../../context/ReservationContext";
@@ -90,26 +91,37 @@ const HotelDetails = () => {
                 </tbody>
               </table>
             </div>
-            {isLogged && !reservationList.hotel ? (
+            {!isLogged ? (
               <div class="w-40 h-11 rounded flex border-solid mx-2 justify-center place-items-center p-2 mx-auto bg-green">
+                <Link
+                  to="/signin"
+                  className="font-medium w-32 h-11 rounded flex border-solid justify-center place-items-center bg-green"
+                >
+                  Log in to book
+                </Link>
+              </div>
+            ) : isLogged && !reservationList.hotel ? (
+              <div class="w-40 h-11 rounded flex border-solid mx-2 justify-center place-items-center p-2 mx-auto bg-green">
+                <button className="flex gap-4" onClick={handleAddToCart}>
                 <svg
                   class="h-6 w-6 text-green-200"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  {" "}
-                  <circle cx="9" cy="21" r="1" />{" "}
-                  <circle cx="20" cy="21" r="1" />{" "}
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
                 </svg>
-
-                <button className="ml-2" onClick={handleAddToCart}>Add to cart</button>
+                  Add to cart
+                </button>
               </div>
-            ) : (<Success message="Réservation d'un hotel en cours" />)}
+            ) : (
+              <Success message="Réservation d'un hotel en cours" />
+            )}
           </div>
         </div>
       </section>

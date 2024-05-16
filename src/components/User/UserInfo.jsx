@@ -91,13 +91,13 @@ function UserInfo() {
         <Link
           to={"/update-user"}
           state={userInfo}
-          className="font-medium rounded border-solid bg-green p-4"
+          className="font-medium rounded border-solid bg-green flex justify-center items-center p-3"
         >
           {" "}
           Update informations{" "}
         </Link>
         <button
-          className="font-medium rounded border-solid bg-green p-3 flex gap-2 justify-center items-center"
+          className="font-medium rounded border-solid bg-green flex justify-center items-center p-3"
           onClick={handleLogout}
         >
           <svg

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useReservation } from "../../context/ReservationContext";
+import { signWithToken } from "../../services/authService";
+import Success from "../Message/Success";
 
 function Cart() {
   const { reservationList, setReservationList } = useReservation();
-  console.log(reservationList);
+  const [message, setMessage] = useState("");
 
   // On verifie si les prix sont null, si un d'entre eux l'est, on additionne 0
   const flightPrice = reservationList.flight ? reservationList.flight.price : 0;
@@ -27,6 +29,29 @@ function Cart() {
     }
   };
 
+  const handleCheckout = async () => {
+    // Coté serveur, si on ne renseigne aucune propriété pour hotel id par exemple, hotel_id aura pour valeur NULL en BDD. Donc si par exemple un utilisateur ne reserve pas d'hotel, on ne renseigne pas cette propriété.
+    const apiObject = { total_price: totalPrice };
+
+    if (reservationList.flight && reservationList.flight.id) {
+      apiObject.flight_id = reservationList.flight.id;
+    }
+
+    if (reservationList.activity && reservationList.activity.id) {
+      apiObject.activity_id = reservationList.activity.id;
+    }
+
+    if (reservationList.hotel && reservationList.hotel.id) {
+      apiObject.hotel_id = reservationList.hotel.id;
+    }
+
+    // Envoyer les données via l'API
+    const response = await signWithToken("frontoffice/reservation", apiObject);
+    if (response.message === "Réservation créée avec succès.") {
+      setMessage(response.message);
+    }
+  };
+
   return (
     <div className="Login">
       <section className="antialiased md:py-8">
@@ -39,7 +64,9 @@ function Cart() {
           !reservationList.hotel &&
           !reservationList.activity ? (
             <div className="flex flex-col justify-center items-center">
-              <p className="text-center my-8 text-2xl font-semibold">No reservations</p>
+              <p className="text-center my-8 text-2xl font-semibold">
+                No reservations
+              </p>
               <img
                 src="https://images.pexels.com/photos/3360711/pexels-photo-3360711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="no-reservation"
@@ -332,7 +359,7 @@ function Cart() {
                 )}
               </div>
 
-              <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-12 lg:w-full">
+              <div className="mx-auto mt-6 max-w-4xl flex-1 lg:mt-12 lg:w-full">
                 <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                   <p className="text-xl font-semibold text-gray-900 dark:text-white">
                     Order summary
@@ -349,12 +376,13 @@ function Cart() {
                     </dl>
                   </div>
 
-                  <a
-                    href="#"
-                    className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  <button
+                    className="font-medium rounded flex border-solid bg-green p-2 mx-auto"
+                    onClick={handleCheckout}
                   >
                     Proceed to Checkout
-                  </a>
+                  </button>
+                  {message !== "" && (<Success message={message} />)}
                 </div>
               </div>
             </div>

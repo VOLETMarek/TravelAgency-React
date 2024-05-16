@@ -18,6 +18,7 @@ import SignIn from "./components/User/SignIn";
 import SignUp from "./components/User/SignUp";
 import UserInfo from "./components/User/UserInfo";
 import UpdateUser from "./components/User/UpdateUser";
+import Cart from "./components/User/Cart";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/user" element={<UserInfo />} />
           <Route path="/update-user" element={<UpdateUser />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
       <Footer />

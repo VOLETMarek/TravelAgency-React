@@ -1,9 +1,17 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import {useReservation} from "../../context/ReservationContext"
+
 
 const FlightDetails = () => {
   let location = useLocation();
   const { state } = location;
+  const { isLogged, setIsLogged } = useAuth();
+  const {reservationList, setReservationList} = useReservation();
+  const handleAddToCart = () => {
+    setReservationList({...reservationList, flight: state.flight})
+  }
   return (
     <div>
       <section>
@@ -28,9 +36,7 @@ const FlightDetails = () => {
                 />
 
                 <div class="mx-4">
-                  <h1 class="text-sm">
-                    {state.flight.airline}
-                  </h1>
+                  <h1 class="text-sm">{state.flight.airline}</h1>
                   <p class="text-sm text-gray-500 dark:text-gray-400">
                     {state.flight.flight_number}
                   </p>
@@ -104,23 +110,26 @@ const FlightDetails = () => {
                 </tbody>
               </table>
             </div>
-            <button class="w-40 h-11 rounded flex border-solid mx-2 justify-center place-items-center p-2 mx-auto bg-green">
-              <svg
-                class="h-6 w-6 text-green-200"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                {" "}
-                <circle cx="9" cy="21" r="1" /> <circle cx="20" cy="21" r="1" />{" "}
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-              </svg>
+            {isLogged && (
+              <div class="w-40 h-11 rounded flex border-solid mx-2 justify-center place-items-center p-2 mx-auto bg-green">
+                <svg
+                  class="h-6 w-6 text-green-200"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  {" "}
+                  <circle cx="9" cy="21" r="1" />{" "}
+                  <circle cx="20" cy="21" r="1" />{" "}
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
 
-              <div className="ml-2">Add to cart</div>
-            </button>
+                <button className="ml-2" onClick={handleAddToCart}>Add to cart</button>
+              </div>
+            )}
           </div>
         </div>
       </section>

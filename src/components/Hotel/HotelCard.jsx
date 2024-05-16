@@ -9,11 +9,11 @@ const HotelCard = ({ hotel }) => {
         src={hotel.image}
         alt="hotel-pic"
       />
-      <div class="p-5">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <div className="p-5">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {hotel.name}
         </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-hidden line-clamp-3">
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-hidden line-clamp-3">
           {hotel.description}
         </p>
         <Link to={`/hotel/${hotel.id}`} state={{ hotel }}>

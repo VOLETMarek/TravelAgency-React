@@ -1,6 +1,6 @@
 function Home() {
   return (
-    <div className="Home flex flex-col justify-center px-64">
+    <div className="flex flex-col justify-center px-64">
       <h1 className="text-center text-3xl py-12 font-bold">
         🏖 &nbsp; Welcome to Travel Agency &nbsp; 🏖
       </h1>

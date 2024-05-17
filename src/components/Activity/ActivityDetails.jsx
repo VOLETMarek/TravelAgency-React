@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useReservation } from "../../context/ReservationContext";
 import Success from "../Message/Success";
+import ReviewList from "../Review/ReviewList";
 
 const ActivityDetails = () => {
   let location = useLocation();
@@ -126,6 +127,9 @@ const ActivityDetails = () => {
             )}
           </div>
         </div>
+      </section>
+      <section>
+        <ReviewList serviceId={state.activity.id} service={"activity"} />
       </section>
     </div>
   );

@@ -20,7 +20,6 @@ export const sign = async (endpoint, userData) => {
 export const signWithToken = async (endpoint, userData) => {
   try {
     const token = getToken();
-    console.log(token)
     const config = {
       headers: {
         Authorization: `Bearer ${token}`, // Ajouter le token dans les headers

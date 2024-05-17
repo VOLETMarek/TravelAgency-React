@@ -14,11 +14,11 @@ function FlightList() {
     fetchFlights();
   }, []);
   return (
-    <div>
+    <div className="mb-8">
       <h1 className="text-center text-3xl py-12 font-bold">
         ✈️ &nbsp; Flight List &nbsp; ✈️
       </h1>
-      <div className="flex flex-wrap gap-4 mx-4 justify-center">
+      <div className="flex flex-wrap gap-8 mx-4 justify-center">
         {flightList.map((flight, index) => (
           <FlightCard flight={flight} />
         ))}

@@ -48,8 +48,8 @@ const FlightDetails = () => {
             </div>
 
             <div class="relative overflow-x-auto my-8">
-              <table class=" border-y w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase item dark:text-gray-400">
                   <tr>
                     <th scope="col" class="px-6 py-3">
                       Departure Airport
@@ -75,7 +75,7 @@ const FlightDetails = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="bg-white dark:bg-gray-800 dark:border-gray-700">
+                  <tr class="item dark:border-gray-700">
                     <td class="px-6 py-4">{state.flight.departure_airport}</td>
                     <td class="px-6 py-4">{state.flight.arrival_airport}</td>
                     <td class="px-6 py-4">

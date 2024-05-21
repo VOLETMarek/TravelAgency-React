@@ -1,0 +1,20 @@
+.custom-input {
+  padding: 1rem 0;
+  border: solid #49e0a1 1px;
+  border-radius: 4px;
+  background-color: #49e0a1;
+  text-align: center;
+  height: 2.75rem;
+}
+
+.custom-input::placeholder {
+  color: black; /* Remplacez par la couleur souhaitée */
+  opacity: 1; /* Assure que la couleur est appliquée correctement */
+  font-weight: 500;
+}
+
+.custom-input:hover {
+  cursor: pointer;
+}
+
+

@@ -6,13 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ReservationProvider } from "./context/ReservationContext";
+import { FilterProvider } from "./context/FilterContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <ReservationProvider>
       <AuthProvider>
-        <App />
+        <FilterProvider>
+          <App />
+        </FilterProvider>
       </AuthProvider>
     </ReservationProvider>
   </BrowserRouter>

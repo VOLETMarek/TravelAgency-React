@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Rate from "../Rate/Rate";
+
 
 const ActivityCard = ({ activity }) => {
   return (
@@ -12,11 +14,14 @@ const ActivityCard = ({ activity }) => {
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-hidden line-clamp-3">
           {activity.description}
         </p>
-        <Link to={`/activity/${activity.id}`} state={{ activity }}>
-          <button className="font-medium w-32 h-11 rounded flex border-solid justify-center place-items-center bg-green">
-            <div>See More</div>
-          </button>
-        </Link>
+        <div className="flex justify-between items-center">
+          <Link to={`/activity/${activity.id}`} state={{ activity }}>
+            <button className="font-medium w-32 h-11 rounded flex border-solid justify-center place-items-center bg-green">
+              <div>See More</div>
+            </button>
+          </Link>
+          <Rate rate={activity.rate} />
+        </div>
       </div>
     </div>
   );

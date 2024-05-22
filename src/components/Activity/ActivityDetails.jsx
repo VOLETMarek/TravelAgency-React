@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useReservation } from "../../context/ReservationContext";
 import Success from "../Message/Success";
 import ReviewList from "../Review/ReviewList";
+import Rate from "../Rate/Rate";
 
 const ActivityDetails = () => {
   let location = useLocation();
@@ -29,9 +30,9 @@ const ActivityDetails = () => {
               src={state.activity.image}
               alt="activity-pic"
             />
-
+            <Rate rate={state.activity.rate} />
             <div class="flex justify-center">
-              <div class="flex items-center mt-8">
+              <div class="flex items-center">
                 <p className="">{state.activity.description}</p>
               </div>
             </div>

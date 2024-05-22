@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import {useReservation} from "../../context/ReservationContext"
 import Success from "../Message/Success";
 import ReviewList from "../Review/ReviewList";
+import Rate from "../Rate/Rate";
 
 
 const FlightDetails = () => {
@@ -30,8 +31,8 @@ const FlightDetails = () => {
               alt="flight-pic"
             />
 
-            <div class="flex justify-center">
-              <div class="flex items-center mt-8">
+            <div class="flex justify-between items-center pt-5">
+              <div class="flex items-center py-3">
                 <img
                   class="object-cover object-center w-10 h-10 rounded-full"
                   src={state.flight.logo}
@@ -45,6 +46,7 @@ const FlightDetails = () => {
                   </p>
                 </div>
               </div>
+              <Rate rate={state.flight.rate} />
             </div>
 
             <div class="relative overflow-x-auto my-8">

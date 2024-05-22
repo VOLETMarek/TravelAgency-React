@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useReservation } from "../../context/ReservationContext";
 import Success from "../Message/Success";
 import ReviewList from "../Review/ReviewList";
+import Rate from "../Rate/Rate";
 
 const HotelDetails = () => {
   let location = useLocation();
@@ -28,9 +29,9 @@ const HotelDetails = () => {
               src={state.hotel.image}
               alt="hotel-pic"
             />
-
+            <Rate rate={state.hotel.rate} />
             <div class="flex justify-center">
-              <div class="flex items-center mt-8">
+              <div class="flex items-center">
                 <p>{state.hotel.description}</p>
               </div>
             </div>

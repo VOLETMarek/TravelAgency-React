@@ -7,7 +7,7 @@ const ResetFilter = () => {
   return (
     <div>
       <button
-        className="font-medium w-32 h-11 rounded flex border-solid mx-2
+        className="font-medium w-32 h-11 rounded flex border-solid
         justify-center place-items-center bg-green"
         onClick={handleChange}
       >

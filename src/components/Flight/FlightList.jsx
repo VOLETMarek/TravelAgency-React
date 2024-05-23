@@ -4,12 +4,17 @@ import FlightCard from "./FlightCard";
 import Calendar from "../Filters/Calendar";
 import ResetFilter from "../Buttons/ResetFilter";
 import { useFilter } from "../../context/FilterContext";
+import Search from "../Filters/Search";
 
 function FlightList() {
   const [flightList, setFlightList] = useState([]);
+  // Ici on receptionne les dates transmis par notre composant calendar
   const [filterDates, setFilterDates] = useState([null, null]);
+  // Création d'un state pour receptionner la valeur de la liste des vols filtrés
   const [filteredFlightList, setFilteredFlightList] = useState([]);
   const { isReset, setIsReset } = useFilter();
+  // ici on receptionne la valeur de l'input search
+  const [searchValue, setSearchValue] = useState("");
 
   // Réinitialiser les filtres lorsque isReset change
   useEffect(() => {
@@ -17,6 +22,7 @@ function FlightList() {
     setFilterDates([null, null]);
   }, [isReset]);
 
+  // Filtrer par date
   useEffect(() => {
     if (filterDates[0] && filterDates[1]) {
       const start = filterDates[0];
@@ -35,6 +41,21 @@ function FlightList() {
     }
   }, [filterDates, flightList]);
 
+  // Filtrer la liste des vols par valeur de recherche
+  useEffect(() => {
+    if (searchValue) {
+      setFilteredFlightList(
+        flightList.filter((flight) =>
+          flight.arrival_airport
+            .toLowerCase()
+            .includes(searchValue.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredFlightList(flightList);
+    }
+  }, [searchValue, flightList]);
+
   // Lors du montage du composant, on recupere les données
   useEffect(() => {
     const fetchFlights = async () => {
@@ -51,6 +72,7 @@ function FlightList() {
         ✈️ &nbsp; Flight List &nbsp; ✈️
       </h1>
       <div className="flex gap-2 items-center justify-center pb-9">
+        <Search setSearchValue={setSearchValue} placeholder={"Search any destination"}/>
         <Calendar setFilterDates={setFilterDates} />
         <ResetFilter />
       </div>

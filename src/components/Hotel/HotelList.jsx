@@ -4,12 +4,15 @@ import HotelCard from "./HotelCard";
 import Calendar from "../Filters/Calendar";
 import ResetFilter from "../Buttons/ResetFilter";
 import { useFilter } from "../../context/FilterContext";
+import Search from "../Filters/Search";
 
 function HotelList() {
   const [hotelList, setHotelList] = useState([]);
   const [filterDates, setFilterDates] = useState([null, null]);
   const [filteredHotelList, setFilteredHotelList] = useState([]);
   const { isReset, setIsReset } = useFilter();
+  // ici on receptionne la valeur de l'input search
+  const [searchValue, setSearchValue] = useState("");
 
   // Réinitialiser les filtres lorsque isReset change
   useEffect(() => {
@@ -17,6 +20,7 @@ function HotelList() {
     setFilterDates([null, null]);
   }, [isReset]);
 
+  // Filtrage par date
   useEffect(() => {
     if (filterDates[0] && filterDates[1]) {
       const start = filterDates[0];
@@ -35,6 +39,21 @@ function HotelList() {
     }
   }, [filterDates, hotelList]);
 
+  // Filtrer la liste des hotels par valeur de recherche
+  useEffect(() => {
+    if (searchValue) {
+      setFilteredHotelList(
+        hotelList.filter((hotel) =>
+          hotel.name
+            .toLowerCase()
+            .includes(searchValue.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredHotelList(hotelList);
+    }
+  }, [searchValue, hotelList]);
+
   // Lors du montage du composant, on recupere les données
   useEffect(() => {
     const fetchHotels = async () => {
@@ -46,16 +65,20 @@ function HotelList() {
   }, []);
 
   return (
-    <div>
+    <div className="pb-8">
       <h1 className="text-center text-3xl py-12 font-bold">
         🏠 &nbsp;Hotel List &nbsp;🏠
       </h1>
       <div className="flex gap-2 items-center justify-center pb-9">
+        <Search
+          setSearchValue={setSearchValue}
+          placeholder={"Search any hotel name"}
+        />
         <Calendar setFilterDates={setFilterDates} />
         <ResetFilter />
       </div>
       {filteredHotelList.length > 0 ? (
-        <div className="flex flex-wrap gap-4 mx-4 justify-center mb-8">
+        <div className="flex flex-wrap gap-4 mx-4 justify-center">
           {filteredHotelList.map((hotel, index) => (
             <HotelCard hotel={hotel} />
           ))}

@@ -4,12 +4,15 @@ import ActivityCard from "./ActivityCard";
 import Calendar from "../Filters/Calendar";
 import ResetFilter from "../Buttons/ResetFilter";
 import { useFilter } from "../../context/FilterContext";
+import Search from "../Filters/Search";
 
 function ActivityList() {
   const [activityList, setActivityList] = useState([]);
   const [filterDates, setFilterDates] = useState([null, null]);
   const [filteredActivityList, setFilteredActivityList] = useState([]);
   const { isReset, setIsReset } = useFilter();
+  // ici on receptionne la valeur de l'input search
+  const [searchValue, setSearchValue] = useState("");
 
   // Réinitialiser les filtres lorsque isReset change
   useEffect(() => {
@@ -17,6 +20,7 @@ function ActivityList() {
     setFilterDates([null, null]);
   }, [isReset]);
 
+  // Filtrage par date
   useEffect(() => {
     if (filterDates[0] && filterDates[1]) {
       const start = filterDates[0];
@@ -35,6 +39,21 @@ function ActivityList() {
     }
   }, [filterDates, activityList]);
 
+  // Filtrer la liste des activités par valeur de recherche
+  useEffect(() => {
+    if (searchValue) {
+      setFilteredActivityList(
+        activityList.filter((activity) =>
+          activity.name
+            .toLowerCase()
+            .includes(searchValue.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredActivityList(activityList);
+    }
+  }, [searchValue, activityList]);
+
   // Lors du montage du composant, on recupere les données
   useEffect(() => {
     const fetchActivities = async () => {
@@ -45,16 +64,20 @@ function ActivityList() {
     fetchActivities();
   }, []);
   return (
-    <div>
+    <div className="pb-8">
       <h1 className="text-center text-3xl py-12 font-bold">
         🏄‍♀️ &nbsp; Activity List &nbsp;🏄‍♀️
       </h1>
       <div className="flex gap-2 items-center justify-center pb-9">
+        <Search
+          setSearchValue={setSearchValue}
+          placeholder={"Search any activity name"}
+        />
         <Calendar setFilterDates={setFilterDates} />
         <ResetFilter />
       </div>
       {filteredActivityList.length > 0 ? (
-        <div className="flex flex-wrap gap-4 mx-4 justify-center mb-8">
+        <div className="flex flex-wrap gap-4 mx-4 justify-center">
           {filteredActivityList.map((activity, index) => (
             <ActivityCard activity={activity} />
           ))}

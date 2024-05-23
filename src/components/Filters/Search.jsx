@@ -7,7 +7,7 @@ const Search = ({ setSearchValue, placeholder }) => {
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
-    setSearchValue(inputValue);
+    setSearchValue(event.target.value);
   };
 
   // Réinitialiser les filtres lorsque isReset change

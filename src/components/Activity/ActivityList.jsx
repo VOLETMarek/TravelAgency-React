@@ -5,14 +5,17 @@ import Calendar from "../Filters/Calendar";
 import ResetFilter from "../Buttons/ResetFilter";
 import { useFilter } from "../../context/FilterContext";
 import Search from "../Filters/Search";
+import Dropdown from "../Filters/Dropdown";
 
 function ActivityList() {
   const [activityList, setActivityList] = useState([]);
-  const [filterDates, setFilterDates] = useState([null, null]);
   const [filteredActivityList, setFilteredActivityList] = useState([]);
-  const { isReset, setIsReset } = useFilter();
+  const [filterDates, setFilterDates] = useState([null, null]);
+  // Ici on réceptionne la valeur du filtrage par prix
+  const [priceValue, setPriceValue] = useState("");
   // ici on receptionne la valeur de l'input search
   const [searchValue, setSearchValue] = useState("");
+  const { isReset, setIsReset } = useFilter();
 
   // Réinitialiser les filtres lorsque isReset change
   useEffect(() => {
@@ -37,28 +40,44 @@ function ActivityList() {
     } else {
       setFilteredActivityList(activityList);
     }
-  }, [filterDates, activityList]);
+  }, [filterDates]);
 
   // Filtrer la liste des activités par valeur de recherche
   useEffect(() => {
     if (searchValue) {
       setFilteredActivityList(
-        activityList.filter((activity) =>
-          activity.name
-            .toLowerCase()
-            .includes(searchValue.toLowerCase())
+        filteredActivityList.filter((activity) =>
+          activity.name.toLowerCase().includes(searchValue.toLowerCase())
         )
       );
     } else {
       setFilteredActivityList(activityList);
     }
-  }, [searchValue, activityList]);
+  }, [searchValue]);
+
+  // Filtrer par prix
+  useEffect(() => {
+    if (priceValue === "asc") {
+      const sorted = [...filteredActivityList].sort(
+        (a, b) => a.price - b.price
+      );
+      setFilteredActivityList(sorted);
+    } else if (priceValue === "desc") {
+      const sorted = [...filteredActivityList].sort(
+        (a, b) => b.price - a.price
+      );
+      setFilteredActivityList(sorted);
+    } else {
+      setFilteredActivityList(activityList);
+    }
+  }, [priceValue]);
 
   // Lors du montage du composant, on recupere les données
   useEffect(() => {
     const fetchActivities = async () => {
       const activities = await fetchData("frontoffice/activity-list");
       setActivityList(activities);
+      setFilteredActivityList(activities);
     };
 
     fetchActivities();
@@ -73,6 +92,7 @@ function ActivityList() {
           setSearchValue={setSearchValue}
           placeholder={"Search any activity name"}
         />
+        <Dropdown setPriceValue={setPriceValue} />
         <Calendar setFilterDates={setFilterDates} />
         <ResetFilter />
       </div>

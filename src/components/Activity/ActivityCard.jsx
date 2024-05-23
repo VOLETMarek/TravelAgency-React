@@ -8,9 +8,12 @@ const ActivityCard = ({ activity }) => {
     <div class="max-w-sm border border-gray-200 rounded-lg shadow item">
       <img className="rounded-t-lg w-full h-64 object-cover" src={activity.image} alt="hotel-pic" />
       <div class="p-5">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-          {activity.name}
-        </h5>
+        <div className="flex justify-between items-center mb-2 ">
+          <h5 class="text-2xl font-bold tracking-tight text-gray-900">
+            {activity.name}
+          </h5>
+          <span>{activity.price}€</span>
+        </div>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-hidden line-clamp-3">
           {activity.description}
         </p>

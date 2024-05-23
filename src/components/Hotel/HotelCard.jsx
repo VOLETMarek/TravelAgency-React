@@ -11,7 +11,10 @@ const HotelCard = ({ hotel }) => {
         alt="hotel-pic"
       />
       <div className="p-5">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight">{hotel.name}</h5>
+        <div className="flex justify-between items-center mb-2 ">
+          <h5 className="text-2xl font-bold tracking-tight">{hotel.name}</h5>
+          <span>{hotel.price_per_night}€</span>
+        </div>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-hidden line-clamp-3">
           {hotel.description}
         </p>

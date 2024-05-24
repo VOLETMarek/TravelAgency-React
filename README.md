@@ -2,6 +2,8 @@
 
 TravelAgency is a web application built with React.js that allows users to search and book flights, hotels, and activities online.
 
+🔅 Don't forget to checkout screenshots on public>screenshots folder 🔅
+
 ## Features
 
 - User Account Management: Users can create and manage their accounts.

@@ -1,1 +1,0 @@
-# Manage Responsive on all page

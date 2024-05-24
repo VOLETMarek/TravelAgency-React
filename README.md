@@ -1,4 +1,4 @@
-# 🛩 TravelAgency 🛩
+# ✈️ TravelAgency - React.js ✈️
 
 TravelAgency is a web application built with React.js that allows users to search and book flights, hotels, and activities online.
 
@@ -9,7 +9,7 @@ TravelAgency is a web application built with React.js that allows users to searc
 - Search Results: Display search results with filtering and sorting options.
 - Online Booking System: Implement an online reservation system with availability calendars.
 - Transaction Management: Handle transactions and payment processing securely.
-- Rating and Reviews: Allow users to rate and leave reviews for hotels, flights, and activities.
+- Rating and Reviews: Allow users to leave reviews for hotels, flights, and activities.
 
 ## Installation
 
@@ -47,10 +47,10 @@ To run this project locally, make sure you have Node.js installed on your machin
 2. Search for flights, hotels, or activities using the search functionality.
 3. Filter and sort search results based on your preferences.
 4. Book your desired flights, hotels, or activities online.
-5. Manage your bookings and view your transaction history.
-6. Rate and leave reviews for hotels, flights, and activities.
+5. Manage your bookings.
+6. Leave reviews for hotels, flights, and activities.
 
 ## Technologies Used
 
 - React.js
-- Node.js
+- Tailwind

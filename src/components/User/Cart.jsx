@@ -82,7 +82,7 @@ function Cart() {
                       {" "}
                       ✈️ Your Flight ✈️{" "}
                     </h2>
-                    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                    <div className="rounded-lg border border-gray-200 p-4">
                       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                         <div className="shrink-0 md:order-1">
                           <img
@@ -91,21 +91,21 @@ function Cart() {
                             alt="flight-pic"
                           />
                           <img
-                            className="hidden h-20 w-20 dark:block"
+                            className="hidden h-20 w-20 rounded dark:block"
                             src={reservationList.flight.image}
                             alt="flight-pic"
                           />
                         </div>
                         <div className="flex items-center justify-between md:order-3 md:justify-end">
                           <div className="text-end md:order-4 md:w-32">
-                            <p className="text-base font-bold text-gray-900 dark:text-white">
+                            <p className="text-base font-bold text-gray-900">
                               {reservationList.flight.price}€
                             </p>
                           </div>
                         </div>
 
                         <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                          <ul className="text-base font-medium dark:text-white">
+                          <ul className="text-base font-medium">
                             <li>{reservationList.flight.airline}</li>
                             <li>
                               Departure -{" "}
@@ -176,7 +176,7 @@ function Cart() {
                       {" "}
                       🏄‍♀️ Your Activity 🏄‍♀️{" "}
                     </h2>
-                    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                    <div className="rounded-lg border border-gray-200 p-4">
                       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                         <div className="shrink-0 md:order-1">
                           <img
@@ -185,21 +185,21 @@ function Cart() {
                             alt="activity-pic"
                           />
                           <img
-                            className="hidden h-20 w-20 dark:block"
+                            className="hidden h-20 w-20 rounded dark:block"
                             src={reservationList.activity.image}
                             alt="activity-pic"
                           />
                         </div>
                         <div className="flex items-center justify-between md:order-3 md:justify-end">
                           <div className="text-end md:order-4 md:w-32">
-                            <p className="text-base font-bold text-gray-900 dark:text-white">
+                            <p className="text-base font-bold text-gray-900">
                               {reservationList.activity.price}€
                             </p>
                           </div>
                         </div>
 
                         <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                          <ul className="text-base font-medium dark:text-white">
+                          <ul className="text-base font-medium">
                             <li className="mb-2 font-bold">
                               {reservationList.activity.name}
                             </li>
@@ -271,7 +271,7 @@ function Cart() {
                     <h2 className="text-center text-xl pt-4 font-bold">
                       🏠 Your Hotel 🏠
                     </h2>
-                    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                    <div className="rounded-lg border border-gray-200 p-4">
                       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                         <div className="shrink-0 md:order-1">
                           <img
@@ -280,21 +280,21 @@ function Cart() {
                             alt="hotel-pic"
                           />
                           <img
-                            className="hidden h-20 w-20 dark:block"
+                            className="hidden h-20 w-20 rounded dark:block"
                             src={reservationList.hotel.image}
                             alt="hotel-pic"
                           />
                         </div>
                         <div className="flex items-center justify-between md:order-3 md:justify-end">
                           <div className="text-end md:order-4 md:w-32">
-                            <p className="text-base font-bold text-gray-900 dark:text-white">
+                            <p className="text-base font-bold">
                               {reservationList.hotel.price_per_night}€
                             </p>
                           </div>
                         </div>
 
                         <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                          <ul className="text-base font-medium dark:text-white">
+                          <ul className="text-base font-medium">
                             <li className="mb-2 font-bold">
                               {reservationList.hotel.name}
                             </li>
@@ -360,17 +360,17 @@ function Cart() {
               </div>
 
               <div className="mx-auto mt-6 max-w-4xl flex-1 lg:mt-12 lg:w-full">
-                <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-                  <p className="text-xl font-semibold text-gray-900 dark:text-white">
+                <div className="space-y-4 rounded-lg border border-gray-200 p-4 ">
+                  <p className="text-xl font-semibold text-gray-900">
                     Order summary
                   </p>
 
                   <div className="space-y-4">
                     <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                      <dt className="text-base font-bold text-gray-900 dark:text-white">
+                      <dt className="text-base font-bold text-gray-900">
                         Total
                       </dt>
-                      <dd className="text-base font-bold text-gray-900 dark:text-white">
+                      <dd className="text-base font-bold text-gray-900">
                         {totalPrice}€
                       </dd>
                     </dl>
@@ -382,7 +382,7 @@ function Cart() {
                   >
                     Proceed to Checkout
                   </button>
-                  {message !== "" && (<Success message={message} />)}
+                  {message !== "" && <Success message={message} />}
                 </div>
               </div>
             </div>

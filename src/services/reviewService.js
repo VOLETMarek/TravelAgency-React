@@ -12,8 +12,6 @@ export const fetchReviewList = async (endpoint, serviceId) => {
 };
 
 export const sendReview = async (endpoint, data) => {
-  console.log(data)
-
   try {
     const token = getToken();
     const config = {
